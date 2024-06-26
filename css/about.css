@@ -27,7 +27,7 @@
 @font-face {
     font-family: 'Subjectivity-Bold-Italic';
     src: url('/fonts/subjectivity/Subjectivity-MediumSlanted.woff2') format('woff2');
-}
+} /**/
 
 html,
 body {
