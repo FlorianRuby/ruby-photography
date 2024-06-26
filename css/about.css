@@ -9,7 +9,7 @@
 @font-face {
     font-family: 'Subjectivity-Bold';
     src: url('/fonts/subjectivity/Subjectivity-Bold.otf') format('opentype');
-
+}
 @font-face {
     font-family: 'RedHat-Regular';
     src: url('/fonts/redhat/RedHatDisplay-Regular.ttf') format('truetype');
@@ -368,5 +368,4 @@ body {
     .container {
         height: 300px;
     }
-}
 }
