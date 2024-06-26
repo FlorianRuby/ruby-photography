@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Florian Ruby">
+    <link rel="stylesheet" href="./css/portfolio.css">
+    <title>Ruby Photography</title>
+</head>
+
+<body>
+    <header class="header-main">
+        <div class="logo">
+            <a href="index.html">
+                <img src="/misc/logo_icon_accent2.png" alt="Logo">
+            </a>
+        </div>
+        <div class="header-icon icon-space" id="header-Icon">
+            <a href="../portfolio.html">
+                <img src="misc/globe_icon_accent.png" alt="Globe Icon">
+            </a>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <div class="navbar-icon" id="navbar-icon">
+            <img src="/misc/navbar_icon_accent5.png" alt="Menu Icon">
+        </div>
+        <ul class="navbar-menu" id="navbar-menu">
+            <li><a href="index.html">Startseite</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="about.html">Über mich</a></li>
+            <li><a href="gear.html">Ausrüstung</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <div class="top-container">
+        <div class="top-rectangle">
+            <img src="/images/export-7886.jpg" alt="Bild eines Uhrenturms">
+        </div>
+        <div class="top-rectangle">
+            <div class="top-title">PORTFOLIO</div>
+            <div class="top-small-text">
+                Seit über vier Jahren beschäftige ich mich intensiv mit Fotografie und konnte mein Portfolio stolz in
+                verschiedenen Genres erweitern.<br><br>
+                Alles begann mit der Makrofotografie, die mir meine Mutter im Alter von zwölf Jahren nahebrachte.
+                Seitdem habe ich Landschaften fotografiert, um die Schönheit der Orte einzufangen, die ich
+                besuche.<br><br>
+                Mit der Zeit entdeckte ich auch die Faszination für Wolkenfotografie, da jeder Mensch Wolken auf seine
+                eigene Weise wahrnimmt und keine Wolke jemals gleich aussieht. Zusätzlich habe ich mich der Architektur-
+                und Autografie gewidmet und hatte die Gelegenheit, für verschiedene Kunden Autos zu
+                fotografieren.<br><br>
+                Mein Interesse an der Luftfahrt führte mich ebenfalls dazu, Flugzeuge zu fotografieren. Zuletzt habe ich
+                eine Leidenschaft für Strassenfotografie entwickelt, um alltägliche Momente festzuhalten, die ihre ganz
+                eigene Geschichte erzählen.
+
+            </div>
+        </div>
+
+        <div class="horizontal-container">
+            <div class="horizontal-rectangle">
+                <img src="/images/export-web-8490.jpg" alt="Bild von Wolken">
+            </div>
+        </div>
+
+        <div class="vertical-container">
+            <div class="vertical-rectangle">
+                <img src="/images/export-8106.jpg" alt="Bild von Hunden">
+            </div>
+            <div class="vertical-rectangle">
+                <img src="/images/export-8123.jpg" alt="Schwarz-Weiss Bild">
+            </div>
+        </div>
+
+        <div class="horizontal-container">
+            <div class="horizontal-rectangle2">
+                <img src="/images/export-web-8626.jpg" alt="Bild von Wassertropfen auf einer Pflanze">
+            </div>
+        </div>
+
+        <div class="vertical-container">
+            <div class="vertical-rectangle">
+                <img src="/images/export-8262.jpg" alt="Image of a tram">
+            </div>
+            <div class="vertical-rectangle">
+                <img src="/images/export-8360.jpg" alt="Bild einer laufenden Person">
+            </div>
+        </div>
+    </div>
+    <div class="vertical-container">
+        <div class="vertical-rectangle">
+            <img src="/images/export-web-8507.jpg" alt="Bild von Wolken">
+        </div>
+        <div class="vertical-rectangle">
+            <img src="/images/export-web-8637.jpg" alt="Bild einer Blume">
+        </div>
+    </div>
+
+    <footer class="footer">
+        <a href="contact.html">
+            <img src="/misc/triangle_icon_accent.png" alt="Footer Icon">
+            <p>florian.rubyy@gmail.com</p>
+        </a>
+    </footer>
+
+    <script>
+        const navbarIcon = document.getElementById('navbar-icon');
+        const navbarMenu = document.getElementById('navbar-menu');
+
+        let timeoutId;
+
+        navbarIcon.addEventListener('mouseenter', function () {
+            clearTimeout(timeoutId);
+            navbarIcon.querySelector('img').style.opacity = '0';
+            navbarMenu.classList.add('active');
+        });
+
+        navbarMenu.addEventListener('mouseenter', function () {
+            clearTimeout(timeoutId);
+        });
+
+        navbarMenu.addEventListener('mouseleave', function () {
+            navbarIcon.querySelector('img').style.opacity = '1';
+            navbarMenu.classList.remove('active');
+        });
+
+        navbarMenu.addEventListener('click', function () {
+            navbarIcon.querySelector('img').style.opacity = '1';
+            navbarMenu.classList.remove('active');
+        });
+    </script>
+</body>
+
+</html>
