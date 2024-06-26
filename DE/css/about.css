@@ -213,7 +213,7 @@ body {
 .text:last-child {
     bottom: 30px;
     font-size: 28px;
-    font-family: 'Subjectivity-Bold', Helvetica, sans-serif;
+    font-family: Subjectivity-Bold, Helvetica, sans-serif;
 }
 
 .top-container {
