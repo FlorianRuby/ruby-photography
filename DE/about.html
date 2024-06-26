@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Florian Ruby">
+    <title>Ruby Photography</title>
+    <link rel="stylesheet" href="/css/about.css">
+</head>
+
+<body>
+    <header class="header-main">
+        <div class="logo">
+            <a href="index.html">
+                <img src="/misc/logo_icon_accent2.png" alt="Logo">
+            </a>
+        </div>
+        <div class="header-icon icon-space" id="header-Icon">
+            <a href="../about.html">
+                <img src="misc/globe_icon_accent.png" alt="Globe Icon">
+            </a>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <div class="navbar-icon" id="navbar-icon">
+            <img src="/misc/navbar_icon_accent5.png" alt="Menu Icon">
+        </div>
+        <ul class="navbar-menu" id="navbar-menu">
+            <li><a href="index.html">Startseite</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="about.html">Über mich</a></li>
+            <li><a href="gear.html">Ausrüstung</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <div class="top-container">
+        <div class="top-rectangle">
+            <img src="/images/export2.jpg" alt="Bild eines Sonnenuntergangs">
+        </div>
+        <div class="top-rectangle">
+            <div class="top-title">ÜBER</div>
+            <div class="top-small-text">
+                Ich bin Florian, ein sechzehnjähriger Fotograf aus der Schweiz. Mit zwölf Jahren habe ich begonnen zu
+                fotografieren, inspiriert von meiner Mutter, die ebenfalls fotografiert. Seitdem ist fotografieren eins
+                meiner Hobbies.
+                Seitdem habe ich immer versucht, alles mögliche zu fotografieren.<br><br>
+                Im Laufe der Jahre konnte ich mit Kunden zusammenarbeiten und ihnen helfen, ihre Ideen umzusetzen. Dabei
+                habe ich nicht nur meine fotografischen Fähigkeiten weiterentwickelt, sondern auch Erfahrungen in der
+                Bearbeitung von Fotos und Videos gesammelt sowie ein Interesse für Grafikdesign entwickelt.<br><br>
+                Jetzt möchte ich meine Fähigkeiten nutzen, um Menschen dabei zu unterstützen, die Bilder festzuhalten,
+                die sie sich vorstellen, und mit weiteren Kunden zusammenzuarbeiten, zu denen ich aufsehe.
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <a href="contact.html">
+            <img src="/misc/triangle_icon_accent.png" alt="Footer Icon">
+            <p>florian.rubyy@gmail.com</p>
+        </a>
+    </footer>
+
+    <div class="container">
+        <div class="rectangle">
+            <a href="https://www.youtube.com/channel/UCk_64HZLWi2YlR7bhiDY6jg" target="_blank"
+                rel="noopener noreferrer">
+                <img class="logossm" src="/misc/yt_logo_accent.png" alt="youtube logo">
+                <div class="text">@reazn.cr2</div>
+                <div class="text">YOUTUBE</div>
+            </a>
+        </div>
+        <div class="rectangle">
+            <a href="https://www.instagram.com/reazn.crw/" target="_blank" rel="noopener noreferrer">
+                <img class="logossm" src="/misc/ig_logo_accent2.png" alt="instagram logo">
+                <div class="text">@reazn.crw</div>
+                <div class="text">INSTAGRAM</div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const navbarIcon = document.getElementById('navbar-icon');
+        const navbarMenu = document.getElementById('navbar-menu');
+
+        let timeoutId;
+
+        navbarIcon.addEventListener('mouseenter', function () {
+            clearTimeout(timeoutId);
+            navbarIcon.querySelector('img').style.opacity = '0';
+            navbarMenu.classList.add('active');
+        });
+
+        navbarMenu.addEventListener('mouseenter', function () {
+            clearTimeout(timeoutId);
+        });
+
+        navbarMenu.addEventListener('mouseleave', function () {
+            navbarIcon.querySelector('img').style.opacity = '1';
+            navbarMenu.classList.remove('active');
+        });
+
+        navbarMenu.addEventListener('click', function () {
+            navbarIcon.querySelector('img').style.opacity = '1';
+            navbarMenu.classList.remove('active');
+        });
+    </script>
+</body>
+
+</html>

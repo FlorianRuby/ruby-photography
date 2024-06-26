@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Florian Ruby">
+    <title>Ruby Photography</title>
+    <style>
+        @font-face {
+            font-family: 'Subjectivity-Super';
+            src: url('/fonts/subjectivity/Subjectivity-super.otf') format('opentype');
+        }
+
+        @font-face {
+            font-family: 'Subjectivity-Black';
+            src: url('/fonts/subjectivity/Subjectivity-black.otf') format('opentype');
+        }
+
+        @font-face {
+            font-family: 'Subjectivity-Bold';
+            src: url('/fonts/subjectivity/Subjectivity-bold.otf') format('opentype');
+        }
+
+
+        @font-face {
+            font-family: 'RedHat-Regular';
+            src: url('/fonts/redhat/RedHatDisplay-Regular.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'RedHat-Medium';
+            src: url('/fonts/redhat/RedHatDisplay-Medium.ttf') format('truetype');
+        }
+
+        body,
+        html {
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: black;
+            overflow: hidden;
+            overflow-x: hidden;
+        }
+
+        .header-main {
+            height: 72px;
+            width: 100%;
+            background: linear-gradient(to bottom, black, transparent);
+            font-size: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .header-main .logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0px;
+        }
+
+        .header-main .logo img {
+            height: 96px;
+        }
+
+        .header-icon {
+            position: absolute;
+            right: 25px;
+            top: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-icon img {
+            height: 48px;
+            width: auto;
+            cursor: pointer;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            width: 100%;
+            transition: height 0.3s ease;
+            position: fixed;
+            bottom: 48px;
+            z-index: 1000;
+            right: 0px;
+        }
+
+        .navbar-menu {
+            list-style-type: none;
+            display: none;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px;
+            border-radius: 17px;
+            z-index: 999;
+            text-align: left;
+            width: auto;
+            white-space: nowrap;
+            backdrop-filter: blur(12px);
+            background: rgba(0, 0, 0, 0.25);
+        }
+
+        .navbar-menu.active {
+            display: block;
+        }
+
+        .navbar-menu li {
+            display: inline-block;
+            margin: 0 0px;
+        }
+
+        .navbar-menu li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0px 8px;
+            display: block;
+            transition: background-color 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-menu li a:hover {
+            background-color: #6e79df;
+            border-radius: 5px;
+        }
+
+        .navbar-icon {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+        }
+
+        .navbar-icon::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background-color: rgba(15, 15, 15, 0.5);
+            border-radius: 100px;
+            backdrop-filter: blur(10px);
+            z-index: -1;
+        }
+
+        .footer {
+            height: 48px;
+            color: #6e79df;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: linear-gradient(to top, black, transparent);
+        }
+
+        .footer img {
+            height: 16px;
+            margin-right: 8px;
+        }
+
+        .footer a {
+            color: inherit;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .footer a::before {
+            content: '';
+            position: absolute;
+            top: 13px;
+            width: 250px;
+            height: 30px;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+            border-radius: 25px;
+            pointer-events: none;
+            left: -5%;
+        }
+
+        .footer a:hover::before {
+            border-color: #6e79df;
+        }
+
+        .title {
+            font-family: 'Subjectivity-Black', Arial, sans-serif;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 78px;
+            z-index: 999;
+            transition: filter 0.5s ease, opacity 0.5s ease;
+            filter: blur(0);
+        }
+
+        .disabled {
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: rotate(-25deg) scale(3.5);
+            transition: transform 1s ease;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .item {
+            position: relative;
+            width: 320px;
+            height: 480px;
+            margin: 3px;
+            transform-origin: center center;
+            transition: transform 1s ease, width 1s ease, height 1s ease, margin 0.5s ease, filter 0.5s ease, opacity 0.5s ease;
+            border-radius: 5px;
+            filter: blur(2px) brightness(0.4);
+            opacity: 0.7;
+        }
+
+        .vertical {
+            width: 240px;
+            height: 360px;
+        }
+
+        .horizontal {
+            width: 320px;
+            height: 240px;
+        }
+
+        .middle-horizontal {
+            width: 320px;
+            height: 180px;
+        }
+
+        .vertical-bottom {
+            width: 200px;
+            height: 300px;
+            margin: 3px;
+        }
+
+        .vertical-bottom img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 0px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                transform: rotate(-25deg) scale(2);
+            }
+
+            .item {
+                margin: 3px;
+            }
+
+            .vertical {
+                width: 160px;
+                height: 240px;
+            }
+
+            .horizontal {
+                width: 240px;
+                height: 180px;
+            }
+
+            .middle-horizontal {
+                width: 240px;
+                height: 120px;
+            }
+
+            .vertical-bottom {
+                width: 160px;
+                height: 240px;
+                margin: 3px;
+            }
+
+            .title {
+                font-size: 35px;
+                text-align: center;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 0px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <header class="header-main">
+        <div class="logo">
+            <a href="index.html">
+                <img src="/misc/logo_icon_accent2.png" alt="Logo Icon">
+            </a>
+        </div>
+        <div class="header-icon icon-space" id="header-Icon">
+            <a href="/DE/index.html">
+                <img src="misc/globe_icon_accent.png" alt="Globe Icon">
+            </a>
+        </div>
+
+    </header>
+
+    <nav class="navbar">
+        <div class="navbar-icon" id="navbar-icon">
+            <img src="/misc/navbar_icon_accent5.png" alt="Menu Icon">
+        </div>
+        <ul class="navbar-menu" id="navbar-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="gear.html">Gear</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <footer class="footer">
+        <a href="contact.html">
+            <img src="/misc/triangle_icon_accent.png" alt="Footer Icon">
+            <p>florian.ruby@gmail.com</p>
+        </a>
+    </footer>
+
+    <div class="title">RUBY PHOTOGRAPHY</div>
+
+    <div class="container">
+        <div class="row">
+            <div class="item vertical">
+                <img src="/images/export-web-8497.jpg" alt="Image of clouds">
+            </div>
+            <div class="item vertical">
+                <img src="/images/export-web-8533-2.jpg" alt="Image of clouds">
+            </div>
+        </div>
+        <div class="row">
+            <div class="item vertical">
+                <img src="/images/export-web-8262.jpg" alt="Image of a tram">
+            </div>
+            <div class="item horizontal">
+                <img src="/images/export-web-8533-2.jpg" alt="Image of clouds">
+            </div>
+            <div class="item horizontal middle-horizontal">
+                <img src="/images/export-web-8641.jpg" alt="Image of a plant">
+            </div>
+            <div class="item horizontal">
+                <img src="/images/export-web-8490.jpg" alt="Image of clouds">
+            </div>
+            <div class="item vertical-bottom">
+                <img src="/images/export-web-8637.jpg" alt="Image of a flower">
+            </div>
+        </div>
+        <div class="row">
+            <div class="item vertical">
+                <img src="/images/export-web--2.jpg" alt="Image of clouds">
+            </div>
+            <div class="item vertical">
+                <img src="/images/export-web-8637.jpg" alt="Image of a flower">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        let scrollCount = 0;
+        let initialRotation = -25;
+        let initialZoom = 3.5;
+        let maxScrollCount = 10;
+        let zoomIncrement = 0.135;
+        let marginIncrement = 2.9;
+        let marginAtMax = 5;
+        let animationComplete = false;
+
+        const navbarIcon = document.getElementById('navbar-icon');
+        const navbarMenu = document.getElementById('navbar-menu');
+
+        let touchStartY = null;
+        let timeoutId;
+
+        navbarIcon.addEventListener('mouseenter', function () {
+            clearTimeout(timeoutId);
+            navbarIcon.querySelector('img').style.opacity = '0';
+            navbarMenu.classList.add('active');
+        });
+
+        navbarMenu.addEventListener('mouseenter', function () {
+            clearTimeout(timeoutId);
+        });
+
+        navbarMenu.addEventListener('mouseleave', function () {
+            navbarIcon.querySelector('img').style.opacity = '1';
+            navbarMenu.classList.remove('active');
+        });
+
+        navbarMenu.addEventListener('click', function () {
+            navbarIcon.querySelector('img').style.opacity = '1';
+            navbarMenu.classList.remove('active');
+        });
+
+        $(document).on(("onwheel" in document.createElement("div") ? "wheel" : "mousewheel"), function (e) {
+            handleScroll(e);
+        });
+
+        document.addEventListener('touchstart', function (e) {
+            touchStartY = e.touches[0].clientY;
+
+            if (e.target !== navbarIcon && e.target !== navbarMenu) {
+                closeNavbar();
+            }
+        });
+
+        document.addEventListener('touchmove', function (e) {
+            e.preventDefault(); 
+
+            let currentY = e.touches[0].clientY;
+            let deltaY = currentY - touchStartY;
+
+            if (Math.abs(deltaY) >= 10) { 
+                let deltaScroll = deltaY > 0 ? 1 : -1; 
+                handleScroll({ originalEvent: { deltaY: deltaScroll } });
+                touchStartY = currentY; 
+            }
+
+            if (e.target !== navbarIcon && e.target !== navbarMenu) {
+                closeNavbar();
+            }
+        });
+
+        function closeNavbar() {
+            navbarIcon.querySelector('img').style.opacity = '1';
+            navbarMenu.classList.remove('active');
+        }
+
+        function handleScroll(e) {
+            e.preventDefault();
+
+            if (!animationComplete) {
+                let deltaY = e.originalEvent.deltaY || (-1 / 40 * e.originalEvent.wheelDelta);
+
+                if (deltaY > 0 && scrollCount < maxScrollCount) {
+                    scrollCount++;
+                } else if (deltaY < 0 && scrollCount > 0) {
+                    scrollCount--;
+                }
+
+                updateAnimation();
+            }
+        }
+
+        function updateAnimation() {
+            let rotationAmount = initialRotation + (scrollCount * 2.5);
+            let zoomAmount = initialZoom + (scrollCount * zoomIncrement);
+            $('.container').css('transform', 'rotate(' + rotationAmount + 'deg) scale(' + zoomAmount + ')');
+
+            if (scrollCount >= 4) {
+                let newMargin = marginAtMax + ((scrollCount - 5) * marginIncrement);
+                newMargin = Math.max(newMargin, 3);
+                $('.item').each(function () {
+                    $(this).css({
+                        margin: newMargin + 'px',
+                        filter: 'none',
+                        opacity: '1'
+                    });
+                });
+            } else {
+                $('.item').each(function () {
+                    let brightnessAmount;
+                    switch (scrollCount) {
+                        case 1:
+                            brightnessAmount = 0.4;
+                            break;
+                        case 2:
+                            brightnessAmount = 0.6;
+                            break;
+                        case 3:
+                            brightnessAmount = 0.8;
+                            break;
+                        case 4:
+                            brightnessAmount = 1;
+                            break;
+                        default:
+                            brightnessAmount = 0.5;
+                    }
+                    $(this).css({
+                        filter: 'brightness(' + brightnessAmount + ')',
+                        opacity: '0.7'
+                    });
+                });
+            }
+
+            if (scrollCount <= 4) {
+                let opacityValue = 1 - (scrollCount / 4);
+                opacityValue = Math.max(opacityValue, 0);
+
+                let blurAmount = (scrollCount - 1) * 3;
+                blurAmount = Math.min(blurAmount, 12);
+                $('.title').css({
+                    filter: 'blur(' + blurAmount + 'px)',
+                    opacity: opacityValue
+                });
+            } else {
+                $('.title').css({
+                    filter: 'blur(12px)',
+                    opacity: '0'
+                });
+            }
+
+            if (scrollCount >= maxScrollCount) {
+                $('body').css('overflow', 'auto');
+                animationComplete = true;
+            }
+        }
+
+
+    </script>
+
+</body>
+
+</html>

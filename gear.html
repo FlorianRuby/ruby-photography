@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Florian Ruby">
+    <link rel="stylesheet" href="/css/gear.css">
+    <title>Ruby Photography</title>
+</head>
+
+<body>
+    <header class="header-main">
+        <div class="logo">
+            <a href="index.html">
+                <img src="/misc/logo_icon_accent2.png" alt="Logo">
+            </a>
+        </div>
+        <div class="header-icon icon-space" id="header-Icon">
+            <a href="/DE/gear.html">
+                <img src="misc/globe_icon_accent.png" alt="Globe Icon">
+            </a>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <div class="navbar-icon" id="navbar-icon">
+            <img src="/misc/navbar_icon_accent5.png" alt="Menu Icon">
+        </div>
+        <ul class="navbar-menu" id="navbar-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="gear.html">Gear</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="top-container">
+        <div class="top-rectangle left"> 
+            <img src="/images/jan-valecka-bRdj_wt1cL4-unsplash.jpg" alt="Image of a sunset">
+        </div>
+        <div class="top-rectangle right">
+            <div class="top-title">GEAR</div>
+            <div class="top-small-text">
+                When taking pictures, each shot requires different gear; relying on the same formula isn't
+                possible.<br><br>
+                The only thing that stays the same is the camera, in my case that's a Canon 5D Mark II, a now
+                12-year-old camera that's still capable of capturing good images, with the only con being its autofocus
+                limitations.<br><br>
+                Lenses are the next important thing—they play a crucial role, determining zoom, background blur (also
+                called bokeh), and more.<br><br>
+                For portraits, a 50mm or 85mm lens is the best choice since it mimics natural human vision.<br><br>
+                For close-ups like plants, a macro lens excels, allowing you to get really close to the subject without
+                losing the ability to focus.<br><br>
+                Completing the holy trinity is a versatile 70-200mm telephoto lens, perfect for distant subjects and
+                nice bokeh effects.
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <a href="contact.html">
+            <img src="/misc/triangle_icon_accent.png" alt="Footer Icon">
+            <p>florian.rubyy@gmail.com</p>
+        </a>
+    </footer>
+
+    <script>
+        const navbarIcon = document.getElementById('navbar-icon');
+        const navbarMenu = document.getElementById('navbar-menu');
+
+        let timeoutId;
+
+        navbarIcon.addEventListener('mouseenter', function () {
+            clearTimeout(timeoutId);
+            navbarIcon.querySelector('img').style.opacity = '0';
+            navbarMenu.classList.add('active');
+        });
+
+        navbarMenu.addEventListener('mouseenter', function () {
+            clearTimeout(timeoutId);
+        });
+
+        navbarMenu.addEventListener('mouseleave', function () {
+            navbarIcon.querySelector('img').style.opacity = '1';
+            navbarMenu.classList.remove('active');
+        });
+
+        navbarMenu.addEventListener('click', function () {
+            navbarIcon.querySelector('img').style.opacity = '1';
+            navbarMenu.classList.remove('active');
+        });
+    </script>
+</body>
+
+</html>

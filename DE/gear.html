@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Florian Ruby">
+    <link rel="stylesheet" href="/css/gear.css">
+    <title>Ruby Photography</title>
+</head>
+
+<body>
+    <header class="header-main">
+        <div class="logo">
+            <a href="index.html">
+                <img src="/misc/logo_icon_accent2.png" alt="Logo">
+            </a>
+        </div>
+        <div class="header-icon icon-space" id="header-Icon">
+            <a href="../gear.html">
+                <img src="misc/globe_icon_accent.png" alt="Globe Icon">
+            </a>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <div class="navbar-icon" id="navbar-icon">
+            <img src="/misc/navbar_icon_accent5.png" alt="Menu Icon">
+        </div>
+        <ul class="navbar-menu" id="navbar-menu">
+            <li><a href="index.html">Startseite</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="about.html">Über mich</a></li>
+            <li><a href="gear.html">Ausrüstung</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <div class="top-container">
+        <div class="top-rectangle left">
+            <img src="/images/jan-valecka-bRdj_wt1cL4-unsplash.jpg" alt="Bild eines Sonnenuntergangs">
+        </div>
+        <div class="top-rectangle right">
+            <div class="top-title">AUSRÜSTUNG</div>
+            <div class="top-small-text">
+                Beim Fotografieren benötigt jede Situation unterschiedliche Ausrüstung; sich auf dieselbe Formel zu
+                verlassen ist nicht möglich.<br><br>
+                Das Einzige, was gleich bleibt, ist die Kamera, in meinem Fall eine Canon 5D Mark II, eine mittlerweile
+                zwölf Jahre alte Kamera, die immer noch in der Lage ist, gute Bilder aufzunehmen.<br><br>
+                Objektive sind das nächste wichtige Element; sie spielen eine entscheidende Rolle und bestimmen den
+                Zoom, den Hintergrundunschärfeffekt, auch Bokeh genannt, und mehr.<br><br>
+                Für Porträts ist ein 50mm- oder 85mm-Objektiv die beste Wahl, da es die natürliche menschliche
+                Sichtweise nachahmt.<br><br>
+                Für Nahaufnahmen wie Pflanzen ist ein Makroobjektiv besonders gut geeignet, da es Ihnen ermöglicht, dem
+                Motiv sehr nahe zu kommen, ohne die Fokussierfähigkeit zu verlieren.<br><br>
+                Ein Teleobjektiv, zum Beispiel ein 70-200mm, wie in meinem Fall, ist jedoch am vielseitigsten. Man kann
+                sich durch den starken Zoom die Motive näher heranholen und hat auch ein komprimierteres Bild, bei dem
+                man die Entfernungsunterschiede nicht mehr richtig sehen kann.
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <a href="contact.html">
+            <img src="/misc/triangle_icon_accent.png" alt="Footer Icon">
+            <p>florian.rubyy@gmail.com</p>
+        </a>
+    </footer>
+
+    <script>
+        const navbarIcon = document.getElementById('navbar-icon');
+        const navbarMenu = document.getElementById('navbar-menu');
+
+        let timeoutId;
+
+        navbarIcon.addEventListener('mouseenter', function () {
+            clearTimeout(timeoutId);
+            navbarIcon.querySelector('img').style.opacity = '0';
+            navbarMenu.classList.add('active');
+        });
+
+        navbarMenu.addEventListener('mouseenter', function () {
+            clearTimeout(timeoutId);
+        });
+
+        navbarMenu.addEventListener('mouseleave', function () {
+            navbarIcon.querySelector('img').style.opacity = '1';
+            navbarMenu.classList.remove('active');
+        });
+
+        navbarMenu.addEventListener('click', function () {
+            navbarIcon.querySelector('img').style.opacity = '1';
+            navbarMenu.classList.remove('active');
+        });
+    </script>
+</body>
+
+</html>

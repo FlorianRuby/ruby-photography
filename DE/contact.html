@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Florian Ruby">
+    <title>Ruby Photography</title>
+    <link rel="stylesheet" href="/css/contact.css">
+</head>
+
+<body>
+    <header class="header-main">
+        <div class="logo">
+            <a href="index.html">
+                <img src="/misc/logo_icon_accent2.png" alt="Logo">
+            </a>
+        </div>
+        <div class="header-icon icon-space" id="header-Icon">
+            <a href="../contact.html">
+                <img src="misc/globe_icon_accent.png" alt="Globe Icon">
+            </a>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <div class="navbar-icon" id="navbar-icon">
+            <img src="/misc/navbar_icon_accent5.png" alt="Menu Icon">
+        </div>
+        <ul class="navbar-menu" id="navbar-menu">
+            <li><a href="index.html">Startseite</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="about.html">Über mich</a></li>
+            <li><a href="gear.html">Ausrüstung</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <div class="top-container">
+        <div id="rectangle1" class="top-rectangle">
+            <img src="/images/contact_image2.jpg" alt="Image of a sunset">
+        </div>
+        <div id="rectangle2" class="top-rectangle">
+            <div class="top-title">KONTAKT</div>
+            <div class="top-small-text">
+                Wenn Sie Ideen haben, die Sie zum Leben erwecken möchten - sei es ein Fotoshooting, eine Bearbeitung oder ein grafisches Designprojekt, würde ich mich freuen, Ihnen zu helfen.<br><br>
+                Ich bin zuversichtlich, dass wir etwas Einzigartiges und Passendes für Sie schaffen können.<br><br>
+                Als leidenschaftlicher Fotograf ist es mir eine Herzensangelegenheit, Ihre Ideen Wirklichkeit werden zu lassen.<br><br>
+                Ihre Zufriedenheit und die Qualität des Endprodukts stehen für mich an erster Stelle.
+                Sie können mich unter florian.rubyy@gmail.com kontaktieren oder mir auf Instagram unter reazn.cr2 eine Nachricht schicken.
+                
+            </div>
+        </div>
+        <div id="rectangle3" class="top-rectangle">
+            <div class="top-title"></div>
+            <div class="top-small-text">
+            </div>
+            <div class="email-contact">
+                <div class="contact-row">
+                    <input type="text" id="name" name="Name" placeholder="Name" class="contact-input">
+                    <input type="email" id="email" name="Email" placeholder="Email" class="contact-input">
+                </div>
+                <textarea id="message" name="Naricht" rows="4" placeholder="Message" class="contact-input"></textarea>
+                <button type="Abschicken" class="contact-button">Abschicken</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <a href="contact.html">
+            <img src="/misc/triangle_icon_accent.png" alt="Footer Icon">
+            <p>florian.rubyy@gmail.com</p>
+        </a>
+    </footer>
+
+    <script>
+        const navbarIcon = document.getElementById('navbar-icon');
+        const navbarMenu = document.getElementById('navbar-menu');
+
+        let timeoutId;
+
+        navbarIcon.addEventListener('mouseenter', function () {
+            clearTimeout(timeoutId); // Clear any previous timeout
+            navbarIcon.querySelector('img').style.opacity = '0';
+            navbarMenu.classList.add('active');
+        });
+
+        navbarMenu.addEventListener('mouseenter', function () {
+            clearTimeout(timeoutId); // Clear any previous timeout
+        });
+
+        navbarMenu.addEventListener('mouseleave', function () {
+            navbarIcon.querySelector('img').style.opacity = '1';
+            navbarMenu.classList.remove('active');
+        });
+
+        navbarMenu.addEventListener('click', function () {
+            navbarIcon.querySelector('img').style.opacity = '1';
+            navbarMenu.classList.remove('active');
+        });
+    </script>
+</body>
+
+</html>

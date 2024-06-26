@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Florian Ruby">
+    <title>Ruby Photography</title>
+    <link rel="stylesheet" href="/css/about.css">
+</head>
+
+<body>
+    <header class="header-main">
+        <div class="logo">
+            <a href="index.html">
+                <img src="/misc/logo_icon_accent2.png" alt="Logo">
+            </a>
+        </div>
+        <div class="header-icon icon-space" id="header-Icon">
+            <a href="/DE/about.html">
+                <img src="misc/globe_icon_accent.png" alt="Globe Icon">
+            </a>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <div class="navbar-icon" id="navbar-icon">
+            <img src="/misc/navbar_icon_accent5.png" alt="Menu Icon">
+        </div>
+        <ul class="navbar-menu" id="navbar-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="gear.html">Gear</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="top-container">
+        <div class="top-rectangle">
+            <img src="/images/export2.jpg" alt="Image of a sunset">
+        </div>
+        <div class="top-rectangle">
+            <div class="top-title">ABOUT</div>
+            <div class="top-small-text">
+                <p>I'm Florian, a sixteen-year-old photographer based in Switzerland. I started taking pictures when I
+                    was twelve because my mother did, so naturally I wanted to take some for myself too. From that point
+                    onward photography has been a hobby of mine.</p>
+
+                <p>Since then, I've always tried to photograph everything, whether it was my family, places I've
+                    visited, cars, or just random scenes I found myself in. Over the years, I have been able to work
+                    with clients and helped them realize their visions.</p>
+
+                <p>During this time, I've gained experience and skills not just in photography but also in editing
+                    videos and photos, where I also developed an interest for graphic design. Now I want to use my
+                    skills to help people capture the pictures they envision and collaborate with more clients and
+                    people I look up to.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <a href="contact.html">
+            <img src="/misc/triangle_icon_accent.png" alt="Footer Icon">
+            <p>florian.rubyy@gmail.com</p>
+        </a>
+    </footer>
+
+    <div class="container">
+        <div class="rectangle">
+            <a href="https://www.youtube.com/channel/UCk_64HZLWi2YlR7bhiDY6jg" target="_blank"
+                rel="noopener noreferrer">
+                <img class="logossm" src="/misc/yt_logo_accent.png" alt="youtube logo">
+                <div class="text">@reazn.cr2</div>
+                <div class="text">YOUTUBE</div>
+            </a>
+        </div>
+        <div class="rectangle">
+            <a href="https://www.instagram.com/reazn.crw/" target="_blank" rel="noopener noreferrer">
+                <img class="logossm" src="/misc/ig_logo_accent2.png" alt="instagram logo">
+                <div class="text">@reazn.crw</div>
+                <div class="text">INSTAGRAM</div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const navbarIcon = document.getElementById('navbar-icon');
+        const navbarMenu = document.getElementById('navbar-menu');
+
+        let timeoutId;
+
+        navbarIcon.addEventListener('mouseenter', function () {
+            clearTimeout(timeoutId);
+            navbarIcon.querySelector('img').style.opacity = '0';
+            navbarMenu.classList.add('active');
+        });
+
+        navbarMenu.addEventListener('mouseenter', function () {
+            clearTimeout(timeoutId);
+        });
+
+        navbarMenu.addEventListener('mouseleave', function () {
+            navbarIcon.querySelector('img').style.opacity = '1';
+            navbarMenu.classList.remove('active');
+        });
+
+        navbarMenu.addEventListener('click', function () {
+            navbarIcon.querySelector('img').style.opacity = '1';
+            navbarMenu.classList.remove('active');
+        });
+    </script>
+</body>
+
+</html>
