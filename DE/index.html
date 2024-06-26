@@ -9,17 +9,17 @@
     <style>
         @font-face {
             font-family: 'Subjectivity-Super';
-            src: url('./fonts/subjectivity/Subjectivity-super.otf') format('opentype');
+            src: url('./fonts/subjectivity/Subjectivity-Super.otf') format('opentype');
         }
 
         @font-face {
             font-family: 'Subjectivity-Black';
-            src: url('./fonts/subjectivity/Subjectivity-black.otf') format('opentype');
+            src: url('./fonts/subjectivity/Subjectivity-Black.otf') format('opentype');
         }
 
         @font-face {
             font-family: 'Subjectivity-Bold';
-            src: url('./fonts/subjectivity/Subjectivity-bold.otf') format('opentype');
+            src: url('./fonts/subjectivity/Subjectivity-Bold.otf') format('opentype');
         }
 
 
@@ -403,154 +403,154 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-let scrollCount = 0;
-let initialRotation = -25;
-let initialZoom = 3.5;
-let maxScrollCount = 10;
-let zoomIncrement = 0.135;
-let marginIncrement = 2.9;
-let marginAtMax = 5;
-let animationComplete = false;
+        let scrollCount = 0;
+        let initialRotation = -25;
+        let initialZoom = 3.5;
+        let maxScrollCount = 10;
+        let zoomIncrement = 0.135;
+        let marginIncrement = 2.9;
+        let marginAtMax = 5;
+        let animationComplete = false;
 
-const navbarIcon = document.getElementById('navbar-icon');
-const navbarMenu = document.getElementById('navbar-menu');
+        const navbarIcon = document.getElementById('navbar-icon');
+        const navbarMenu = document.getElementById('navbar-menu');
 
-let touchStartY = null;
-let timeoutId;
+        let touchStartY = null;
+        let timeoutId;
 
-navbarIcon.addEventListener('mouseenter', function () {
-    clearTimeout(timeoutId);
-    navbarIcon.querySelector('img').style.opacity = '0';
-    navbarMenu.classList.add('active');
-});
+        navbarIcon.addEventListener('mouseenter', function () {
+            clearTimeout(timeoutId);
+            navbarIcon.querySelector('img').style.opacity = '0';
+            navbarMenu.classList.add('active');
+        });
 
-navbarMenu.addEventListener('mouseenter', function () {
-    clearTimeout(timeoutId);
-});
+        navbarMenu.addEventListener('mouseenter', function () {
+            clearTimeout(timeoutId);
+        });
 
-navbarMenu.addEventListener('mouseleave', function () {
-    navbarIcon.querySelector('img').style.opacity = '1';
-    navbarMenu.classList.remove('active');
-});
+        navbarMenu.addEventListener('mouseleave', function () {
+            navbarIcon.querySelector('img').style.opacity = '1';
+            navbarMenu.classList.remove('active');
+        });
 
-navbarMenu.addEventListener('click', function () {
-    navbarIcon.querySelector('img').style.opacity = '1';
-    navbarMenu.classList.remove('active');
-});
+        navbarMenu.addEventListener('click', function () {
+            navbarIcon.querySelector('img').style.opacity = '1';
+            navbarMenu.classList.remove('active');
+        });
 
-$(document).on(("onwheel" in document.createElement("div") ? "wheel" : "mousewheel"), function (e) {
-    handleScroll(e);
-});
+        $(document).on(("onwheel" in document.createElement("div") ? "wheel" : "mousewheel"), function (e) {
+            handleScroll(e);
+        });
 
-document.addEventListener('touchstart', function (e) {
-    touchStartY = e.touches[0].clientY;
+        document.addEventListener('touchstart', function (e) {
+            touchStartY = e.touches[0].clientY;
 
-    if (e.target !== navbarIcon && e.target !== navbarMenu) {
-        closeNavbar();
-    }
-});
+            if (e.target !== navbarIcon && e.target !== navbarMenu) {
+                closeNavbar();
+            }
+        });
 
-document.addEventListener('touchmove', function (e) {
-    e.preventDefault();
+        document.addEventListener('touchmove', function (e) {
+            e.preventDefault();
 
-    let currentY = e.touches[0].clientY;
-    let deltaY = currentY - touchStartY;
+            let currentY = e.touches[0].clientY;
+            let deltaY = currentY - touchStartY;
 
-    if (Math.abs(deltaY) >= 10) { 
-        let deltaScroll = deltaY > 0 ? 1 : -1;
-        handleScroll({ originalEvent: { deltaY: deltaScroll } }); 
-        touchStartY = currentY; 
-    }
+            if (Math.abs(deltaY) >= 10) {
+                let deltaScroll = deltaY > 0 ? 1 : -1;
+                handleScroll({ originalEvent: { deltaY: deltaScroll } });
+                touchStartY = currentY;
+            }
 
-    if (e.target !== navbarIcon && e.target !== navbarMenu) {
-        closeNavbar();
-    }
-});
+            if (e.target !== navbarIcon && e.target !== navbarMenu) {
+                closeNavbar();
+            }
+        });
 
-function closeNavbar() {
-    navbarIcon.querySelector('img').style.opacity = '1';
-    navbarMenu.classList.remove('active');
-}
-
-function handleScroll(e) {
-    e.preventDefault();
-
-    if (!animationComplete) {
-        let deltaY = e.originalEvent.deltaY || (-1 / 40 * e.originalEvent.wheelDelta);
-
-        if (deltaY > 0 && scrollCount < maxScrollCount) {
-            scrollCount++;
-        } else if (deltaY < 0 && scrollCount > 0) {
-            scrollCount--;
+        function closeNavbar() {
+            navbarIcon.querySelector('img').style.opacity = '1';
+            navbarMenu.classList.remove('active');
         }
 
-        updateAnimation();
-    }
-}
+        function handleScroll(e) {
+            e.preventDefault();
 
-function updateAnimation() {
-    let rotationAmount = initialRotation + (scrollCount * 2.5);
-    let zoomAmount = initialZoom + (scrollCount * zoomIncrement);
-    $('.container').css('transform', 'rotate(' + rotationAmount + 'deg) scale(' + zoomAmount + ')');
+            if (!animationComplete) {
+                let deltaY = e.originalEvent.deltaY || (-1 / 40 * e.originalEvent.wheelDelta);
 
-    if (scrollCount >= 4) {
-        let newMargin = marginAtMax + ((scrollCount - 5) * marginIncrement);
-        newMargin = Math.max(newMargin, 3);
-        $('.item').each(function () {
-            $(this).css({
-                margin: newMargin + 'px',
-                filter: 'none',
-                opacity: '1'
-            });
-        });
-    } else {
-        $('.item').each(function () {
-            let brightnessAmount;
-            switch (scrollCount) {
-                case 1:
-                    brightnessAmount = 0.4;
-                    break;
-                case 2:
-                    brightnessAmount = 0.6;
-                    break;
-                case 3:
-                    brightnessAmount = 0.8;
-                    break;
-                case 4:
-                    brightnessAmount = 1;
-                    break;
-                default:
-                    brightnessAmount = 0.5;
+                if (deltaY > 0 && scrollCount < maxScrollCount) {
+                    scrollCount++;
+                } else if (deltaY < 0 && scrollCount > 0) {
+                    scrollCount--;
+                }
+
+                updateAnimation();
             }
-            $(this).css({
-                filter: 'brightness(' + brightnessAmount + ')',
-                opacity: '0.7'
-            });
-        });
-    }
+        }
 
-    if (scrollCount <= 4) {
-        let opacityValue = 1 - (scrollCount / 4);
-        opacityValue = Math.max(opacityValue, 0);
+        function updateAnimation() {
+            let rotationAmount = initialRotation + (scrollCount * 2.5);
+            let zoomAmount = initialZoom + (scrollCount * zoomIncrement);
+            $('.container').css('transform', 'rotate(' + rotationAmount + 'deg) scale(' + zoomAmount + ')');
 
-        let blurAmount = (scrollCount - 1) * 3;
-        blurAmount = Math.min(blurAmount, 12);
-        $('.title').css({
-            filter: 'blur(' + blurAmount + 'px)',
-            opacity: opacityValue
-        });
-    } else {
-        $('.title').css({
-            filter: 'blur(12px)',
-            opacity: '0'
-        });
-    }
+            if (scrollCount >= 4) {
+                let newMargin = marginAtMax + ((scrollCount - 5) * marginIncrement);
+                newMargin = Math.max(newMargin, 3);
+                $('.item').each(function () {
+                    $(this).css({
+                        margin: newMargin + 'px',
+                        filter: 'none',
+                        opacity: '1'
+                    });
+                });
+            } else {
+                $('.item').each(function () {
+                    let brightnessAmount;
+                    switch (scrollCount) {
+                        case 1:
+                            brightnessAmount = 0.4;
+                            break;
+                        case 2:
+                            brightnessAmount = 0.6;
+                            break;
+                        case 3:
+                            brightnessAmount = 0.8;
+                            break;
+                        case 4:
+                            brightnessAmount = 1;
+                            break;
+                        default:
+                            brightnessAmount = 0.5;
+                    }
+                    $(this).css({
+                        filter: 'brightness(' + brightnessAmount + ')',
+                        opacity: '0.7'
+                    });
+                });
+            }
 
-    if (scrollCount >= maxScrollCount) {
-        $('body').css('overflow', 'auto');
-        animationComplete = true;
-    }
-}
+            if (scrollCount <= 4) {
+                let opacityValue = 1 - (scrollCount / 4);
+                opacityValue = Math.max(opacityValue, 0);
+
+                let blurAmount = (scrollCount - 1) * 3;
+                blurAmount = Math.min(blurAmount, 12);
+                $('.title').css({
+                    filter: 'blur(' + blurAmount + 'px)',
+                    opacity: opacityValue
+                });
+            } else {
+                $('.title').css({
+                    filter: 'blur(12px)',
+                    opacity: '0'
+                });
+            }
+
+            if (scrollCount >= maxScrollCount) {
+                $('body').css('overflow', 'auto');
+                animationComplete = true;
+            }
+        }
 
 
     </script>
