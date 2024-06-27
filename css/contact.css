@@ -1,31 +1,31 @@
 @font-face {
     font-family: 'Subjectivity-Super';
-    src: url('/fonts/subjectivity/super.otf') format('opentype');
+    src: url('../fonts/subjectivity/super.otf') format('opentype');
 }
 
 @font-face {
     font-family: 'Subjectivity-Black';
-    src: url('/fonts/subjectivity/black.otf') format('opentype');
+    src: url('../fonts/subjectivity/black.otf') format('opentype');
 }
 
 @font-face {
     font-family: 'Subjectivity-Bold';
-    src: url('/fonts/subjectivity/bold.otf') format('opentype');
+    src: url('../fonts/subjectivity/bold.otf') format('opentype');
 }
 
 @font-face {
     font-family: 'RedHat-Regular';
-    src: url('/fonts/redhat/RedHatDisplay-Regular.ttf') format('truetype');
+    src: url('../fonts/redhat/RedHatDisplay-Regular.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'RedHat-Medium';
-    src: url('/fonts/redhat/RedHatDisplay-Medium.ttf') format('truetype');
+    src: url('../fonts/redhat/RedHatDisplay-Medium.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Subjectivity-Bold-Italic';
-    src: url('/fonts/subjectivity/mediumslanted.woff2') format('woff2');
+    src: url('../fonts/subjectivity/mediumslanted.woff2') format('woff2');
 }
 
 
