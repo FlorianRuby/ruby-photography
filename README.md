@@ -1,10 +1,17 @@
-# Ruby Photography
 
-## Overview
+**As a heads up, this was my first website I've ever made and I'm at the point where I feel like it doesn't reflect my current web-dev skills so if you're here to judge my work then check out my newer _and much better_ projects!**
 
-This is a website about my photography portfolio which was programmed with HTML, CSS and JavaScript in the timetspan of about two weeks. 
-It features of a startpage as well as four other pages where you can see my portfolio, learn more about me, find out what gear to use and what gear I use and also get in contact with me. 
+---
 
-## Showcase
+### Portfolio
+↳ [visit](https://reazn.tech)
+ ↳ [repo](https://github.com/FlorianRuby/github.io)
 
-On the homepage, you'll be greeted by a scroll animation programmed in JavaScript. Unfortunately, this animation only works on desktop since JavaScript handles scrolls from a mouse and a touchscreen differently. You can get a small peek into my work on this page, but if you want to see more pictures, you can navigate via the navbar to the portfolio, where I showcase more images. From the navbar, you can also navigate to other pages such as Contact, About, or Gear. With the icon in the top right corner, you can switch the language between English and German, with English as the default language, which the website was also designed and optimised for.
+### School session tracker
+↳ [visit](https://habenwirmorgenopl.info)
+ ↳ [repo](https://github.com/florianruby/habenwirmorgenopl.info)
+
+### Old Portfolio
+_also outdated but was fun to make_ <br>
+↳ [visit](https://old.reazn.tech)
+ ↳ [repo](https://github.com/FlorianRuby/reazn-tech)
